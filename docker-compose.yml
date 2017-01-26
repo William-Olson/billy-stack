@@ -1,0 +1,41 @@
+haproxy:
+  image: dockercloud/haproxy:1.2.1
+  ports:
+    - '80:80'
+  links:
+    - backend
+
+backend:
+  image: stack/backend:latest
+  command: npm run dev
+  environment:
+    - DEBUG=billy*,db*,server*,router*,ref*
+    - DEBUG_COLORS=true
+    - SERVICES=db,server
+  ports:
+    - 1337
+  volumes:
+    - ./backend/:/opt/backend/container
+  links:
+    - db
+
+db-init:
+  image: stack/backend:latest
+  command: npm start
+  environment:
+    - DEBUG=billy*,db*
+    - DEBUG_COLORS=true
+    - SERVICES=db,db-init
+    - VIRTUAL_HOST=*,https://*
+  volumes:
+    - ./backend/:/opt/backend/container
+  links:
+    - db
+
+db:
+  image: mdillon/postgis:9.5
+  ports:
+    - 5432:5432
+  environment:
+    - POSTGRES_USER=dev
+    - POSTGRES_PASSWORD=dev

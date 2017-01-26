@@ -1,0 +1,45 @@
+{
+  "name": "backend",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "./node_modules/.bin/nodemon -r babel-register ./container/index.js",
+    "start": "node -r babel-register ./container/index.js"
+  },
+  "babel": {
+    "plugins": [
+      "transform-async-to-generator",
+      "transform-es2015-parameters",
+      "transform-es2015-destructuring",
+      "transform-es2015-block-scoping",
+      [
+        "transform-es2015-classes",
+        {
+          "loose": true
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "async-retry": "^0.2.1",
+    "billy": "^1.7.3",
+    "bluebird": "^3.4.7",
+    "body-parser": "~1.15.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.13.4",
+    "pg": "^6.1.2",
+    "route-harness": "^1.1.0",
+    "sequelize": "^3.30.0",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.16.0",
+    "babel-plugin-transform-es2015-block-scoping": "^6.22.0",
+    "babel-plugin-transform-es2015-classes": "^6.22.0",
+    "babel-plugin-transform-es2015-destructuring": "^6.22.0",
+    "babel-plugin-transform-es2015-parameters": "^6.22.0",
+    "babel-register": "^6.18.0",
+    "nodemon": "^1.11.0"
+  }
+}
