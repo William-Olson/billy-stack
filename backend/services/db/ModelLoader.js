@@ -27,12 +27,15 @@ module.exports = class ModelLoader
     debug('loading db models now...');
 
     // import model files
-    fs.readdirSync(modelsPath)
-      .filter(file => file.slice(-3) === '.js')
-      .forEach(file => {
-        const model = this._sequelize.import(path.join(modelsPath, file));
-        this._db[model.name] = model;
-      });
+    const dir = fs.readdirSync(modelsPath)
+      .filter(file => file.slice(-3) === '.js');
+
+    for (let file of dir) {
+      const model = this._sequelize.import(
+        path.join(modelsPath, file)
+      );
+      this._db[model.name] = model;
+    }
 
     // associate models
     for (let modelName in this._db) {
@@ -56,7 +59,7 @@ module.exports = class ModelLoader
       debug(`connection attempt: ${i}`);
       await this._sequelize.authenticate();
     };
-    const factor = 1.7;
+    const factor = 1.5;
     const maxTimeout = 15000;
 
     debug('...authenticating with db');
