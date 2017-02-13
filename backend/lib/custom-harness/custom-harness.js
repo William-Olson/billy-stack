@@ -1,4 +1,4 @@
-const debug = require('debug')('router:harness');
+const debug = require('debug')('route-harness');
 const ref = require('../ref');
 
 module.exports = (fn, info) => {
@@ -6,7 +6,7 @@ module.exports = (fn, info) => {
   const name = `${info.routeClass}.${info.handler}`;
   const route = `${info.method.toUpperCase()}: '${info.fullPath}'`;
 
-  debug(`custom-wrap | <-~-~({ ${name}, ${route} })~-~-> `);
+  debug(`mapped | ${name}, ${route}`);
 
   return async (req, res, next) => {
 
