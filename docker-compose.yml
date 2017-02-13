@@ -9,7 +9,7 @@ backend:
   image: stack/backend:latest
   command: npm run dev
   environment:
-    - DEBUG=billy*,db*,server*,router*,ref*
+    - DEBUG=billy*,db*,server*,route*,ref*
     - DEBUG_COLORS=true
     - SERVICES=db,server
   ports:

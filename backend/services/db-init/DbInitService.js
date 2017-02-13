@@ -1,19 +1,34 @@
 const DbInit = require('./DbInit');
 
+/**
+ * Runs the db-init service and exits
+ */
 module.exports = class DbInitService
 {
-  constructor(db)
+  constructor(stack, knex, db)
   {
+    this._stack = stack;
+    this._knex = knex;
     this._db = db;
   }
 
   async start()
   {
-    // wait for db connection to resolve
-    await this._db.authenticate();
+    const dbInit = this._stack.make(DbInit);
 
-    // run db-init
-    const dbInit = new DbInit(this._db);
-    await dbInit.start();
+    try {
+
+      // run db-init ops
+      await dbInit.createTables();
+      await dbInit.importData();
+
+    }
+    catch (err) {
+      console.error('DB-Init Error: ', err);
+      throw err;
+    }
+
+    // kill process when done
+    process.exit(0);
   }
 };

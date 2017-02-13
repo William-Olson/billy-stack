@@ -21,8 +21,11 @@ module.exports = class Server
     this._app.use(bodyParser.urlencoded({ extended: false }));
     this._app.use(cookieParser());
 
-    // init the harness & routes
-    this._config.harness.inject = { db: this._db };
+    this._config.harness.inject = Object.assign(
+      // excessive injection of db model api for routes
+      {}, this._db, { db: this._db }
+    );
+
     this._harness = new Harness(this._app, this._config.harness);
     for (let route of routes) {
       this._harness.use(route.basePath, route.file);

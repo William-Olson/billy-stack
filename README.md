@@ -1,15 +1,21 @@
-# stack
+# billy-stack
 
-Messing around with [billy](http://github.com/bvalosek/billy) and [route-harness](http://github.com/william-olson/route-harness) libs
+Messing around with [billy](http://github.com/bvalosek/billy),
+[route-harness](http://github.com/william-olson/route-harness) and
+[knex](https://github.com/tgriesser/knex) libs
 
-#### build
+### Requirements
+
+The following must be installed to run the app.
+
+  - [Docker](https://docs.docker.com/engine/installation/)
+  - [Docker Compose](https://docs.docker.com/compose/install/)
+
+#### build / run
 
 ```
 
-make # run
-
-
-docker-compose logs -f # show logs
+make
 
 ```
 

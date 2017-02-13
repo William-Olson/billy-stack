@@ -28,9 +28,9 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.2.0",
     "express": "~4.13.4",
+    "knex": "^0.12.6",
     "pg": "^6.1.2",
     "route-harness": "^1.1.0",
-    "sequelize": "^3.30.0",
     "uuid": "^3.0.1"
   },
   "devDependencies": {

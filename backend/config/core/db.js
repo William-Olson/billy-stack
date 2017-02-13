@@ -1,43 +1,13 @@
 module.exports = {
   db: {
-    development: {
-      logging: false,
-      username: 'dev',
-      password: 'dev',
-      database: 'dev',
-      host: 'db',
-      dialect: 'postgres',
-      define: {
-        timestamps: false,
-        underscored: true,
-        freezeTableName: true
-      }
+    client: 'pg',
+    connection: {
+        user: 'dev',
+        database: 'dev',
+        port: 5432,
+        host: 'db',
+        password: 'dev'
     },
-    test: {
-      logging: false,
-      username: 'dev',
-      password: 'dev',
-      database: 'dev',
-      host: 'db',
-      dialect: 'postgres',
-      define: {
-        timestamps: false,
-        underscored: true,
-        freezeTableName: true
-      }
-    },
-    production: {
-      logging: false,
-      username: 'root',
-      password: null,
-      database: 'production',
-      host: 'db',
-      dialect: 'postgres',
-      define: {
-        timestamps: false,
-        underscored: true,
-        freezeTableName: true
-      }
-    }
+    debug: false
   }
 };
