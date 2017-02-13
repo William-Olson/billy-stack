@@ -4,11 +4,11 @@ RUN mkdir -p /opt/backend/container
 
 WORKDIR /opt/backend
 
-COPY ./ /opt/backend/container
-
-RUN cp /opt/backend/container/package.json /opt/backend/package.json
+COPY ./package.json /opt/backend/
 
 RUN npm install
+
+COPY ./ /opt/backend/container
 
 EXPOSE 1337
 
