@@ -1,14 +1,18 @@
 const debug = require('debug')('db:model-creation');
 module.exports = {
 
-  /**
-   * name of table
-   */
+  /*
+
+    name of table
+
+  */
   name: 'users',
 
-  /**
-   * create method with table definition
-   */
+  /*
+
+    create method with table definition
+
+  */
   async create(knex)
   {
     return await knex.schema.createTableIfNotExists('users', table => {

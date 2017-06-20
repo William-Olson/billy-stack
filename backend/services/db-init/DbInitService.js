@@ -1,8 +1,10 @@
 const DbInit = require('./DbInit');
 
-/**
- * Runs the db-init service and exits
- */
+/*
+
+    Runs the db-init service and exits
+
+*/
 module.exports = class DbInitService
 {
   constructor(stack, knex, db)

@@ -10,18 +10,22 @@ module.exports = class DataConnection {
     this._knex.authenticate = async () => await this.authenticate();
   }
 
-  /**
-   * retrieve the knex instance
-   */
+  /*
+
+    Retrieve the knex instance
+
+  */
   getClient()
   {
     return this._knex;
   }
 
-  /**
-   * await this method to ensure knex has successfully connected to the
-   * postgres instance
-   */
+  /*
+
+    Await this method to ensure knex has successfully connected to the
+    postgres instance
+
+  */
   async authenticate()
   {
     const task = async (exit, i) => {

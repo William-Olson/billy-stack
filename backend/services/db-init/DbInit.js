@@ -12,9 +12,11 @@ const tableFiles = modelFiles
   .filter(file => file.slice(-9) === '-table.js');
 
 
-/**
- * Creates db tables and imports data to db
- */
+/*
+
+    Creates db tables and imports data to db
+
+*/
 module.exports = class DbInit
 {
   constructor(knex)
@@ -22,9 +24,11 @@ module.exports = class DbInit
     this._knex = knex;
   }
 
-  /**
-   * Create the db schema
-   */
+  /*
+
+    Create the db schema
+
+  */
   async createTables()
   {
     debug('Creating db tables now...');
@@ -37,9 +41,11 @@ module.exports = class DbInit
     debug('Tables created successfully!');
   }
 
-  /**
-   * Import user data to db
-   */
+  /*
+
+    Import user data to db
+
+  */
   async _importUsers()
   {
     // add users
@@ -50,8 +56,10 @@ module.exports = class DbInit
     }
   }
 
- /**
-  * Add static json data to db
+ /*
+
+    Add static json data to db
+
   */
   async importData()
   {

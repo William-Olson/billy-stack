@@ -1,6 +1,8 @@
-/**
- * Users db api
- */
+/*
+
+    Users db api
+
+*/
 module.exports = class UsersApi {
 
   constructor(knex)
@@ -8,18 +10,22 @@ module.exports = class UsersApi {
     this._knex = knex;
   }
 
-  /**
-   * get all users in db
-   */
+  /*
+
+     get all users in db
+
+  */
   async getAll()
   {
     const rows = await this._q();
     return rows.map(r => this._clean(r));
   }
 
-  /**
-   * get a user by id
-   */
+  /*
+
+     get a user by id
+
+  */
   async getById(id)
   {
     if (!id) {
@@ -37,9 +43,11 @@ module.exports = class UsersApi {
     return this._clean(res);
   }
 
-  /**
-   * run a basic users query
-   */
+  /*
+
+     run a basic users query
+
+  */
   async _q(w = {})
   {
     return await this._knex
@@ -48,9 +56,11 @@ module.exports = class UsersApi {
       .where(w);
   }
 
-  /**
-   * strip down responses to relevant properties
-   */
+  /*
+
+     strip down responses to relevant properties
+
+  */
   _clean(model)
   {
     return {

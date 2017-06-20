@@ -1,9 +1,11 @@
 const DataConnection = require('./DataConnection');
 const DataApiLoader = require('./DataApiLoader');
 
-/**
- * Inits the knex and db services
- */
+/*
+
+    Inits the knex and db services
+
+*/
 module.exports = class DataApiService
 {
   constructor(stack)

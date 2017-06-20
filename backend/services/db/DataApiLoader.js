@@ -9,18 +9,22 @@ const DATA_API_TAIL = '-api.js';
 const apiFiles = fs.readdirSync(DATA_API_PATH)
   .filter(fname => fname.slice(-1 * DATA_API_TAIL.length) === DATA_API_TAIL);
 
-/**
- * get a scope name based off a filename (converts any dashes to
- * underscores as well)
- */
+/*
+
+  Get a scope name based off a filename (converts any dashes to
+  underscores as well)
+
+*/
 const scopeName = fname =>
   fname.slice(0, fname.length - DATA_API_TAIL.length).replace(/\-/gim, '_');
 
 
 
-/**
- * For loading up the data layer api
- */
+/*
+
+  For loading up the data layer api
+
+*/
 module.exports = class DataApiLoader
 {
 
@@ -31,10 +35,12 @@ module.exports = class DataApiLoader
     this._db = {};
   }
 
-  /**
-   * Loads and instantiates all api class files and registers them with scope
-   * names based off filenames
-   */
+  /*
+
+    Loads and instantiates all api class files and registers them with scope
+    names based off filenames
+
+  */
   createApi()
   {
     debug('creating data layer api...');
